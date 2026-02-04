@@ -3,9 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Overdressed </title>
+    <title>Overdressed</title>
     <link rel="stylesheet" href="style.css" />
   </head>
+
   <body>
 
     <header class="navbar">
@@ -16,55 +17,54 @@
       </nav>
     </header>
 
+    <!-- HERO -->
     <section class="hero">
-      <img
-        src="images/hero.jpeg"
-        alt="Overdressed hero"
-        class="hero-img"
-      />
+      <img src="./images/hero.jpeg" alt="Overdressed hero" class="hero-img" />
       <div class="hero-text">
         <h1 class="brand-name">Overdressed</h1>
-        <p class="tagline"> </p>
         <a href="#products" class="hero-btn">Shop Now</a>
       </div>
     </section>
 
+    <!-- PRODUCTS -->
     <section class="products" id="products">
       <div class="product-grid">
 
         <div class="product-card">
           <div class="product-images">
+
+            <!-- main image -->
             <img
-              src="images/product1.jpg"
+              src="./images/product1.jpg"
               alt="Bijli Backless Top"
               class="product-image main-image"
             />
-            <div class="image-thumbnails" id="imageThumbnails">
-              <!-- Thumbnails will be generated here -->
-            </div>
+
+            <!-- thumbnails -->
+            <div class="image-thumbnails" id="imageThumbnails"></div>
+
           </div>
+
           <div class="product-info">
             <h3 class="product-name">Bijli Backless Top</h3>
-            <a href="#" class="buy-btn" data-name="Bijli Backless Top" >Pre-book on WhatsApp</a>
+            <a href="#" class="buy-btn" data-name="Bijli Backless Top">
+              Pre-book on WhatsApp
+            </a>
           </div>
         </div>
 
       </div>
     </section>
 
-    <section class="coming-soon">
-      <h2>More Products Coming Soon!</h2>
-      <p>Exciting new collections launching on <strong>February 10th, 2026</strong></p>
-      <button class="remind-btn" onclick="remindMe()">Remind Me</button>
-    </section>
-
+    <!-- FOOTER -->
     <footer class="footer">
       <p>© Overdressed</p>
       <a href="#" id="footerContactWhatsApp" class="buy-btn">Contact Us</a>
     </footer>
 
+
+    <!-- SCRIPT -->
     <script>
-      // Replace with your WhatsApp number (country code + number, digits only), e.g. '919123456789'
       const SELLER_PHONE = '919494698055';
 
       function toggleMenu() {
@@ -72,131 +72,56 @@
         menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
       }
 
-      // Initialize product image carousel
+      /* =============================
+         ✅ FIXED PRODUCT IMAGE LOADER
+         ============================= */
       function initProductImages() {
         const mainImage = document.querySelector('.main-image');
         const thumbnailsContainer = document.getElementById('imageThumbnails');
 
-        if (!mainImage || !thumbnailsContainer) return;
+        const images = [
+          "./images/product1.jpg",
+          "./images/product2.jpg",
+          "./images/product3.jpg"
+        ];
 
-        // Attempt to load product images and only show thumbnails that exist
-        const imageCount = 4; // product1.jpg .. product4.jpg
-        const basePath = 'images/product';
-        let firstSet = false;
+        thumbnailsContainer.innerHTML = "";
 
-        for (let i = 1; i <= imageCount; i++) {
-          const src = `${basePath}${i}.jpg`;
-          const tester = new Image();
-          // on successful load, create thumbnail
-          tester.onload = () => {
-            const thumb = document.createElement('img');
-            thumb.src = src;
-            thumb.alt = `Product view ${i}`;
-            thumb.className = 'thumbnail';
+        images.forEach((src, index) => {
+          const thumb = document.createElement('img');
+          thumb.src = src;
+          thumb.className = 'thumbnail';
 
-            thumb.addEventListener('click', () => {
-              mainImage.src = src;
-              document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
-              thumb.classList.add('active');
-            });
+          thumb.addEventListener('click', () => {
+            mainImage.src = src;
+            document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
+            thumb.classList.add('active');
+          });
 
-            thumbnailsContainer.appendChild(thumb);
+          thumbnailsContainer.appendChild(thumb);
 
-            if (!firstSet) {
-              mainImage.src = src;
-              thumb.classList.add('active');
-              firstSet = true;
-            }
-          };
-          // on error, skip silently
-          tester.onerror = () => {};
-          tester.src = src;
-        }
-      }
-
-      function sendWhatsApp(name, price) {
-        const phone = SELLER_PHONE.replace(/\D/g, '');
-        const text = `Hi, I'm interested in pre-booking ${name} (${price}). Please confirm availability and payment details.`;
-        const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
-        window.open(url, '_blank');
-      }
-
-      function remindMe() {
-        const phone = SELLER_PHONE.replace(/\D/g, '');
-        const text = 'Hi, I want to be reminded on February 10th and I want to pre-book the Premium Jacket. Please let me know more details.';
-        const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
-        window.open(url, '_blank');
-      }
-
-      function closeRemindModal() {
-        document.getElementById('remindModal').style.display = 'none';
-      }
-
-      // Close modal when clicking outside of it
-      window.addEventListener('click', (event) => {
-        const modal = document.getElementById('remindModal');
-        if (event.target === modal) {
-          modal.style.display = 'none';
-        }
-      });
-
-      // Handle form submission
-      document.getElementById('remindForm').addEventListener('submit', async (e) => {
-        e.preventDefault();
-        
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const phone = document.getElementById('phone').value;
-
-        // Store data in localStorage
-        let reminders = JSON.parse(localStorage.getItem('reminders')) || [];
-        reminders.push({
-          name: name,
-          email: email,
-          phone: phone,
-          timestamp: new Date().toLocaleString()
+          if (index === 0) {
+            mainImage.src = src;
+            thumb.classList.add('active');
+          }
         });
-        localStorage.setItem('reminders', JSON.stringify(reminders));
+      }
 
-        // Show success message
-        alert('Thank you!');
-        
-        // Reset form and close modal
-        document.getElementById('remindForm').reset();
-        closeRemindModal();
-      });
+      function sendWhatsApp(name) {
+        const phone = SELLER_PHONE.replace(/\D/g, '');
+        const text = `Hi, I'm interested in pre-booking ${name}. Please share details.`;
+        window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, '_blank');
+      }
 
       document.querySelectorAll('.buy-btn').forEach((btn) => {
         btn.addEventListener('click', (e) => {
           e.preventDefault();
-          const name = btn.dataset.name;
-          const price = btn.dataset.price;
-          sendWhatsApp(name, price);
+          sendWhatsApp(btn.dataset.name);
         });
       });
 
-      const contactLink = document.getElementById('contactWhatsApp');
-      if (contactLink) {
-        contactLink.addEventListener('click', (e) => {
-          e.preventDefault();
-          const phone = SELLER_PHONE.replace(/\D/g, '');
-          const text = 'Hi, I have a question about Overdressed products.';
-          window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, '_blank');
-        });
-      }
-
-      const footerContact = document.getElementById('footerContactWhatsApp');
-      if (footerContact) {
-        footerContact.addEventListener('click', (e) => {
-          e.preventDefault();
-          const phone = SELLER_PHONE.replace(/\D/g, '');
-          const text = 'Hi, I have a query';
-          window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, '_blank');
-        });
-      }
-
-      // Initialize on page load
       document.addEventListener('DOMContentLoaded', initProductImages);
     </script>
+
   </body>
 </html>
