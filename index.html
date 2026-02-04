@@ -11,6 +11,11 @@
 
     <header class="navbar">
       <button class="hamburger" onclick="toggleMenu()">☰</button>
+      <div class="nav-logo">
+        <a href="/">
+          <img src="images/logo.png" alt="Overdressed logo" />
+        </a>
+      </div>
       <nav class="nav-menu" id="navMenu">
         <a href="#products" onclick="toggleMenu()">Shop</a>
         <a href="#" id="contactWhatsApp" onclick="toggleMenu()">Contact</a>
@@ -81,8 +86,7 @@
 
         const images = [
           "./images/product1.jpg",
-          "./images/product2.jpg",
-          "./images/product3.jpg"
+          "./images/product2.jpg"
         ];
 
         thumbnailsContainer.innerHTML = "";
