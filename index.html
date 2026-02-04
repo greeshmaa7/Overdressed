@@ -35,7 +35,7 @@
         <div class="product-card">
           <div class="product-images">
             <img
-              src="images/product1.1.png"
+              src="images/product1.jpg"
               alt="Bijli Backless Top"
               class="product-image main-image"
             />
@@ -45,7 +45,7 @@
           </div>
           <div class="product-info">
             <h3 class="product-name">Bijli Backless Top</h3>
-            <a href="#" class="buy-btn" data-name="Bijli Backless Top" data-price="$89">Pre-book on WhatsApp</a>
+            <a href="#" class="buy-btn" data-name="Bijli Backless Top" >Pre-book on WhatsApp</a>
           </div>
         </div>
 
@@ -77,12 +77,12 @@
         const mainImage = document.querySelector('.main-image');
         const thumbnailsContainer = document.getElementById('imageThumbnails');
         
-        // Check for product images (product1.png, product2.png, etc.)
-        const imageCount = 5; // Support up to 5 images
+        // Check for product images (product1.jpg, product2.jpg, etc.)
+        const imageCount = 4; // Support up to 4 images (product1.jpg..product4.jpg)
         const images = [];
         
         for (let i = 1; i <= imageCount; i++) {
-          images.push(`images/product${i}.png`);
+          images.push(`images/product${i}.jpg`);
         }
         
         // Create thumbnails
