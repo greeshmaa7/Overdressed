@@ -1,4 +1,3 @@
-/* NAVBAR */
 .navbar {
   position: fixed;
   top: 0;
@@ -10,6 +9,11 @@
   padding: 20px 20px;
   z-index: 10;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
 
 
 .nav-logo img {
@@ -31,8 +35,6 @@
   transform: translateX(-50%);
 }
 
-
-
 .hamburger {
   font-size: 22px;
   background: none;
@@ -40,6 +42,7 @@
   color: white;
   cursor: pointer;
 }
+
 
 
 .nav-menu {
@@ -71,80 +74,148 @@ body {
   --text: #111;
 }
 
+:root {
+  --maroon: #5b1d1d;
+  --maroon-dark: #431414;
+  --background: #faf8f6;
+  --text: #111;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--text);
+  padding-top: 80px; /* space for fixed navbar */
 }
 
-/* HERO */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--maroon);
+  color: white;
+  z-index: 100;
+  padding: 0 16px;
+}
+
+.hamburger {
+  position: absolute;
+  left: 14px;
+  font-size: 22px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.nav-menu {
+  position: absolute;
+  top: 64px;
+  right: 0;
+  background: var(--maroon);
+  width: 100%;
+  display: none;
+  flex-direction: column;
+}
+
+.nav-menu a {
+  color: white;
+  text-decoration: none;
+  padding: 12px 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
 .hero {
   position: relative;
-  
+  overflow: hidden;
 }
+
 .hero::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.55),
-    rgba(0, 0, 0, 0)
-  );
+  background: rgba(0, 0, 0, 0.18);
 }
-
 
 .hero-img {
   width: 100%;
-  height: 70vh;
+  height: 60vh;
   object-fit: cover;
+  display: block;
 }
 
 .hero-text {
   position: absolute;
-  bottom: 30px;
-  left: 20px;
-  color: white;
+  left: 50%;
+  bottom: 14%;
+  transform: translateX(-50%);
+  text-align: center;
   z-index: 2;
+  color: white;
+  padding: 0 12px;
 }
 
 .brand-name {
-  font-size: 32px;
+  font-size: 40px;
   letter-spacing: 1px;
 }
 
 .tagline {
-  font-size: 14px;
-  opacity: 0.9;
+  font-size: 16px;
+  opacity: 0.95;
+  margin-top: 8px;
 }
 
-/* PRODUCTS */
+.hero-btn {
+  display: inline-block;
+  margin-top: 14px;
+  padding: 10px 26px;
+  background: white;
+  color: var(--maroon);
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 16px;
+}
+
 .products {
-  padding: 20px;
+  padding: 28px 18px;
+  max-width: 1100px;
+  margin: 0 auto 40px;
 }
 
 .product-grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
 }
 
 .product-card {
   background: white;
-  border-radius: 14px;
+  border-radius: 12px;
   overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
 }
 
 .product-card img {
   width: 100%;
   height: 320px;
   object-fit: cover;
+  display: block;
 }
 
 .product-info {
@@ -152,24 +223,23 @@ body {
 }
 
 .product-name {
-  font-size: 16px;
+  font-size: 18px;
   margin-bottom: 6px;
 }
 
 .price {
-  font-size: 14px;
+  font-size: 15px;
   color: var(--maroon);
   margin-bottom: 12px;
 }
 
-/* BUTTON */
 .buy-btn {
-  display: block;
+  display: inline-block;
   text-align: center;
-  padding: 12px;
+  padding: 10px 14px;
   background: var(--maroon);
   color: white;
-  border-radius: 30px;
+  border-radius: 26px;
   text-decoration: none;
   font-size: 14px;
 }
@@ -178,26 +248,19 @@ body {
   background: var(--maroon-dark);
 }
 
-/* FOOTER */
 .footer {
-  padding: 30px;
+  padding: 26px;
   text-align: center;
-  font-size: 12px;
+  font-size: 13px;
   color: #666;
 }
-.hero-btn {
-  display: inline-block;
-  margin-top: 16px;
-  padding: 12px 28px;
-  background: var(--maroon);
-  color: #fff;
-  border-radius: 30px;
-  text-decoration: none;
-  font-size: 14px;
-  letter-spacing: 0.6px;
-}
 
-.hero-btn:hover {
-  opacity: 0.95;
+@media (min-width: 900px) {
+  .hero-img {
+    height: 68vh;
+  }
+  .brand-name {
+    font-size: 52px;
+  }
 }
 

@@ -1,132 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>clothes&stuff</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Overdressed — Curated clothing</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
 
-  <!-- HERO SECTION -->
-  <section class="hero">
-    <img src="images/hero.png" alt="clothes&stuff hero image" class="hero-img" />
-    <div class="hero-text">
-  <h1 class="brand-name">clothes&stuff</h1>
-  <p class="tagline">Clothes for the plot</p>
+    <header class="navbar">
+      <button class="hamburger" onclick="toggleMenu()">☰</button>
+      <nav class="nav-menu" id="navMenu">
+        <a href="#products" onclick="toggleMenu()">Shop</a>
+        <a href="#" id="contactWhatsApp" onclick="toggleMenu()">Contact</a>
+      </nav>
+    </header>
 
-  <a
-    href="https://wa.me/919494698055?text=Hi!%20I%20want%20to%20shop%20from%20clothes%26stuff"
-    class="hero-btn"
-    target="_blank"
-  >
-    Shop Now
-  </a>
-</div>
-
-  </section>
-
-  <!-- PRODUCTS -->
- <section class="products" id="products">
-
-    <div class="product-grid">
-
-      <!-- Product 1 -->
-      <div class="product-card">
-        <img src="images/top1.png" alt="Red halter top" />
-        <div class="product-info">
-          <h3 class="product-name">Red Halter Top</h3>
-          <p class="price">$29</p>
-          <a href="https://wa.me/9494698055?text=Hi!%20I'm%20interested%20in%20Red%20Halter%20Top" target="_blank" class="buy-btn">
-            Buy Now
-          </a>
-        </div>
+    <section class="hero">
+      <img
+        src="https://picsum.photos/1200/600?blur=2"
+        alt="Overdressed hero"
+        class="hero-img"
+      />
+      <div class="hero-text">
+        <h1 class="brand-name">Overdressed</h1>
+        <p class="tagline">Curated styles for confident you</p>
+        <a href="#products" class="hero-btn">Shop Now</a>
       </div>
+    </section>
 
-      <!-- Product 2 -->
-      <div class="product-card">
-        <img src="images/top2.jpeg" alt="Essential Hoodie" />
-        <div class="product-info">
-          <h3 class="product-name">Essential Hoodie</h3>
-          <p class="price">$59</p>
-          <a href="https://wa.me/9494698055?text=Hi!%20I'm%20interested%20in%20Essential%20Hoodie" target="_blank" class="buy-btn">
-            Buy Now
-          </a>
+    <section class="products" id="products">
+      <div class="product-grid">
+
+        <div class="product-card">
+          <img
+            src="images/top1.png"
+            onerror="this.onerror=null;this.src='https://picsum.photos/seed/p1/600/600'"
+            alt="Red Halter Top"
+          />
+          <div class="product-info">
+            <h3 class="product-name">Red Halter Top</h3>
+            <p class="price">$29</p>
+            <a href="#" class="buy-btn" data-name="Red Halter Top" data-price="$29">Buy on WhatsApp</a>
+          </div>
         </div>
-      </div>
 
-      <!-- Product 3 -->
-      <div class="product-card">
-        <img src="images/top3.jpeg" alt="Minimal Dress" />
-        <div class="product-info">
-          <h3 class="product-name">Minimal Dress</h3>
-          <p class="price">$79</p>
-          <a href="https://wa.me/9494698055?text=Hi!%20I'm%20interested%20in%20Minimal%20Dress" target="_blank" class="buy-btn">
-            Buy Now
-          </a>
+        <div class="product-card">
+          <img
+            src="images/top2.jpeg"
+            onerror="this.onerror=null;this.src='https://picsum.photos/seed/p2/600/600'"
+            alt="Essential Hoodie"
+          />
+          <div class="product-info">
+            <h3 class="product-name">Essential Hoodie</h3>
+            <p class="price">$59</p>
+            <a href="#" class="buy-btn" data-name="Essential Hoodie" data-price="$59">Buy on WhatsApp</a>
+          </div>
         </div>
-      </div>
 
-      <!-- Product 4 -->
-      <div class="product-card">
-        <img src="images/top4.jpeg" alt="Comfort Pants" />
-        <div class="product-info">
-          <h3 class="product-name">Comfort Pants</h3>
-          <p class="price">$49</p>
-          <a href="https://wa.me/9494698055?text=Hi!%20I'm%20interested%20in%20Comfort%20Pants" target="_blank" class="buy-btn">
-            Buy Now
-          </a>
+        <div class="product-card">
+          <img
+            src="images/top3.jpeg"
+            onerror="this.onerror=null;this.src='https://picsum.photos/seed/p3/600/600'"
+            alt="Minimal Dress"
+          />
+          <div class="product-info">
+            <h3 class="product-name">Minimal Dress</h3>
+            <p class="price">$79</p>
+            <a href="#" class="buy-btn" data-name="Minimal Dress" data-price="$79">Buy on WhatsApp</a>
+          </div>
         </div>
-      </div>
 
-      <!-- Product 5 -->
-      <div class="product-card">
-        <img src="images/top5.jpeg" alt="Weekend Jacket" />
-        <div class="product-info">
-          <h3 class="product-name">Weekend Jacket</h3>
-          <p class="price">$89</p>
-          <a href="https://wa.me/9494698055?text=Hi!%20I'm%20interested%20in%20Weekend%20Jacket" target="_blank" class="buy-btn">
-            Buy Now
-          </a>
+        <div class="product-card">
+          <img
+            src="images/top4.jpeg"
+            onerror="this.onerror=null;this.src='https://picsum.photos/seed/p4/600/600'"
+            alt="Comfort Pants"
+          />
+          <div class="product-info">
+            <h3 class="product-name">Comfort Pants</h3>
+            <p class="price">$49</p>
+            <a href="#" class="buy-btn" data-name="Comfort Pants" data-price="$49">Buy on WhatsApp</a>
+          </div>
         </div>
+
+        <div class="product-card">
+          <img
+            src="images/top5.jpeg"
+            onerror="this.onerror=null;this.src='https://picsum.photos/seed/p5/600/600'"
+            alt="Weekend Jacket"
+          />
+          <div class="product-info">
+            <h3 class="product-name">Weekend Jacket</h3>
+            <p class="price">$89</p>
+            <a href="#" class="buy-btn" data-name="Weekend Jacket" data-price="$89">Buy on WhatsApp</a>
+          </div>
+        </div>
+
       </div>
+    </section>
 
-    </div>
-  </section>
+    <footer class="footer">
+      <p>© Overdressed</p>
+    </footer>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <p>© clothes&stuff</p>
-  </footer>
+    <script>
+      // Replace with your WhatsApp number (country code + number, digits only), e.g. '919123456789'
+      const SELLER_PHONE = '919494698055';
 
-<script>
-  function toggleMenu() {
-    const menu = document.getElementById("navMenu");
-    menu.style.display = menu.style.display === "flex" ? "none" : "flex";
-  }
-</script>
+      function toggleMenu() {
+        const menu = document.getElementById('navMenu');
+        menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+      }
 
+      function sendWhatsApp(name, price) {
+        const phone = SELLER_PHONE.replace(/\D/g, '');
+        const text = `Hi, I'm interested in buying ${name} (${price}). Please confirm availability and payment details.`;
+        const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+        window.open(url, '_blank');
+      }
 
-</body>
-<header class="navbar">
-<button class="hamburger" onclick="toggleMenu()">
-  ☰
-</button>
+      document.querySelectorAll('.buy-btn').forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const name = btn.dataset.name;
+          const price = btn.dataset.price;
+          sendWhatsApp(name, price);
+        });
+      });
 
-<div class="nav-logo">
-  <img src="images/logo2.png" alt="clothes&stuff logo">
-</div>
-
-  <nav class="nav-menu" id="navMenu">
-    <a href="#products" onclick="toggleMenu()">Shop Now</a>
-    <a
-      href="https://wa.me/919494698055?text=Hi!%20I%20want%20to%20contact%20clothes%26stuff"
-      target="_blank"
-      onclick="toggleMenu()"
-    >
-      Contact Us
-    </a>
-  </nav>
-</header>
-
+      const contactLink = document.getElementById('contactWhatsApp');
+      if (contactLink) {
+        contactLink.addEventListener('click', (e) => {
+          e.preventDefault();
+          const phone = SELLER_PHONE.replace(/\D/g, '');
+          const text = 'Hi, I have a question about Overdressed products.';
+          window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, '_blank');
+        });
+      }
+    </script>
+  </body>
 </html>
