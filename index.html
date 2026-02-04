@@ -76,31 +76,42 @@
       function initProductImages() {
         const mainImage = document.querySelector('.main-image');
         const thumbnailsContainer = document.getElementById('imageThumbnails');
-        
-        // Check for product images (product1.jpg, product2.jpg, etc.)
-        const imageCount = 4; // Support up to 4 images (product1.jpg..product4.jpg)
-        const images = [];
-        
+
+        if (!mainImage || !thumbnailsContainer) return;
+
+        // Attempt to load product images and only show thumbnails that exist
+        const imageCount = 4; // product1.jpg .. product4.jpg
+        const basePath = 'images/product';
+        let firstSet = false;
+
         for (let i = 1; i <= imageCount; i++) {
-          images.push(`images/product${i}.jpg`);
+          const src = `${basePath}${i}.jpg`;
+          const tester = new Image();
+          // on successful load, create thumbnail
+          tester.onload = () => {
+            const thumb = document.createElement('img');
+            thumb.src = src;
+            thumb.alt = `Product view ${i}`;
+            thumb.className = 'thumbnail';
+
+            thumb.addEventListener('click', () => {
+              mainImage.src = src;
+              document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
+              thumb.classList.add('active');
+            });
+
+            thumbnailsContainer.appendChild(thumb);
+
+            if (!firstSet) {
+              mainImage.src = src;
+              thumb.classList.add('active');
+              firstSet = true;
+            }
+          };
+          // on error, skip silently
+          tester.onerror = () => {};
+          tester.src = src;
         }
-        
-        // Create thumbnails
-        images.forEach((src, index) => {
-          const thumb = document.createElement('img');
-          thumb.src = src;
-          thumb.alt = `Product view ${index + 1}`;
-          thumb.className = 'thumbnail';
-          if (index === 0) thumb.classList.add('active');
-          
-          thumb.addEventListener('click', () => {
-            mainImage.src = src;
-            document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
-            thumb.classList.add('active');
-          });
-          
-          thumbnailsContainer.appendChild(thumb);
-        });
       }
 
       function sendWhatsApp(name, price) {
